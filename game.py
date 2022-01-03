@@ -2,7 +2,10 @@
 class tictactoe:
     # for a game we need a game board
     # we need two players, represented by letter "O" and "X"
-    def __init__(self, letter,board): # board should be a list storing the data for each spot
+    # board is not a input(attribute) so I should not make it inside of __init__()
+    # Instead, I should define below (the original status of the board, every spot is empty)
+    # We don't need to input letter in the game. So the class game is like a game current status, letter is a attribute for the player.
+    def __init__(self): # board should be a list storing the data for each spot
         self.letter = letter
         self.board = board
 
@@ -58,7 +61,7 @@ class tictactoe:
         if all(self.board[i] == letter for i in [0,4,8]):
 
         if all(self.board[i] == letter for i in [2,4,6]):
-                
+
 
 
 
