@@ -1,5 +1,6 @@
 # first we need to create a class for the game
-import player
+from player import humanplayer,computerplayer
+import time
 class tictactoe:
     # for a game we need a game board
     # we need two players, represented by letter "O" and "X"
@@ -81,13 +82,14 @@ class tictactoe:
 # Let's initiate a game
 
 def play(game,x_player,o_player, print_board = True):
-    if print_board == True:
-        game.gameboard_num()
 
+    if print_board:
+        game.gameboard_num()
     # the game class need a initial parameter letter.
     letter = "X" # starting letter
 
-    while not game.win or len(game.available_spot) != 0:
+    while not game.win or len(game.available_spot()) != 0:
+        
         if letter == 'X':
             square = x_player.nextmove(game)
         else:
@@ -98,20 +100,30 @@ def play(game,x_player,o_player, print_board = True):
                                     # meantime calling the method triggering update the board
 
             if print_board:
-                print(letter + f' makes a move to spot {square}')
                 game.print_currentboard()
+                print(letter + f' makes a move to spot {square}')
                 print(' ')
         # after take a moving we should check if the game is over. check current winner
             if game.winner: # winner is not None
                 print('The winner is '+ letter)
                 return letter # exit the function means end the game
         #after one player take a move, we need to switch the player
-        letter = 'X' if letter == 'O' else 'O'      
+        letter = 'X' if letter == 'O' else 'O'
+        time.sleep(1)
+              
     
 
     # need a while loop
     if print_board:
         print('It\'s a tie game')
+
+
+if __name__ == "__main__":
+    game = tictactoe()
+    x_player = humanplayer("X")
+    o_player = computerplayer("O")
+
+    play(game,x_player,o_player)
 
 
 

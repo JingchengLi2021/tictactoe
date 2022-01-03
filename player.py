@@ -14,6 +14,7 @@ class humanplayer(player):
         super().__init__(letter)
 
     def nextmove(self,game):
+        
         valid_move = False
         # we need to choose a valid spot 
         # a valid spot should be a number within the available list
@@ -27,7 +28,8 @@ class humanplayer(player):
                 valid_move = True
 
             except ValueError:
-                print('Invalid input, please choose a number again!')
+                #print('Invalid input, please choose a number again!')
+                spot_choose = input('Invalid input,please choose a number again')
 
         return spot_choose        
 
